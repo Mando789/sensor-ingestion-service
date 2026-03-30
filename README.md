@@ -106,7 +106,8 @@ Run multiple instances of the FastAPI service behind a load balancer. Since the 
 For analytical queries at this volume, consider a time-series database such as TimescaleDB (a PostgreSQL extension) or InfluxDB. They are mainly designed for append-heavy workloads and offer automatic partitioning by time, efficient compression, and built-in downsampling.
 
 
-`## Assumptions`
-`1. **Timestamps are provided in ISO 8601 format** and can include timezone information. The service stores them as strings to preserve the original format sent by the sensor.` 
-`2. **A single reading per request.** The current endpoint accepts one reading at a time. For the scaled architecture, a batch endpoint (accepting an array of readings) would reduce HTTP overhead.` 
-`3. **The `reading` field is a generic float.** The service does not enforce domain-specific bounds (e.g. temperature between -50 and 60) because different sensor types measure different things. Domain validation could be added per sensor type. 4. **No authentication.** This prototype does not implement API keys or tokens. In production, each sensor would authenticate via an API key or mutual TLS.`
+## Assumptions
+1. **Timestamps are provided in ISO 8601 format** and can include timezone information. The service stores them as strings to preserve the original format sent by the sensor.
+2. **A single reading per request.** The current endpoint accepts one reading at a time. For the scaled architecture, a batch endpoint (accepting an array of readings) would reduce HTTP overhead.
+3. **The `reading` field is a generic float.** The service does not enforce domain-specific bounds (e.g. temperature between -50 and 60) because different sensor types measure different things. Domain validation could be added per sensor type. 4. **No authentication.** This prototype does not implement API keys or tokens. In production, each sensor would authenticate via an API key or mutual TLS.
+4. **No authentication.** This prototype does not implement API keys or tokens.
